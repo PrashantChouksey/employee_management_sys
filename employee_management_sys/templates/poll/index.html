@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+    {% block content %}
+        <div>
+            <h1>List of {{ title }}</h1>
+            <a class="btn btn-primary float-right" href="{% url 'poll_add' %}">Add Poll</a>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thread-light">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if question %}
+                {% for q in question %}
+                     <tr>
+                        <th scope="row">
+                            <a class="list-group-item" href="{% url 'single_poll' id=q.id %}">{{ q.title }}</a>
+                        </th>
+                        <td align="center">
+                            <a class="btn btn-primary" href="{%  url 'details' id=q.id %}">Details</a>
+                            <a class="btn btn-warning" href="{%  url 'poll_edit' id=q.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{%  url 'poll_delete' id=q.id %}">Delete</a>
+                        </td>
+                     </tr>
+                    {% endfor %}
+                </ul>
+                <ul class="text-center">
+                </ul>
+                {% else %}
+                    <p>There is no question available</p>
+                {% endif %}
+            </tbody>
+    {% endblock %}

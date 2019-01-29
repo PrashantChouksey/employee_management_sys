@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+    {% block content %}
+        <h1>Questation Details</h1>
+        <h2>{{ qus.title }}</h2>
+        {% for choice in qus.choices %}
+            <p>{{ choice.text }} ({{ choice.count_answer }})</p>
+        {% endfor %}
+        <h2> poll is created by {{ qus.created_by.first_name }}</h2>
+    {% endblock %}

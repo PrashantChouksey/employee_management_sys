@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="PUT">
+        {% csrf_token %}
+        <h2>Update Poll</h2>
+        <table class="table table-bordered table-light">
+            {{ poll_form.as_table }}
+            {% for choice in choice_form %}
+                {{ choice.as_table }}
+            {% endfor %}
+        </table>
+    <br/>
+    <button type="submit" class="btn btn-warning float-right">ADD POLL</button>
+    </form>
+
+{% endblock content %}
